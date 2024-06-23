@@ -83,8 +83,16 @@ function App() {
     } else {
       setTeam([...team, fighter]);
       setMoney(money - fighter.price);
+      setZombieFighters(zombieFighters.filter((selected) => selected !== fighter));
     }
   }
+
+  // function handleRemoveFighter(fighter) {
+  //   const updateTeam - team.filter((teamMember) => ) 
+
+  // }
+
+
   const totalStrength = team.reduce((total, fighter) => total + fighter.strength, 0);
   const totalAgility = team.reduce((total, fighter) => total + fighter.agility, 0);
 
@@ -95,7 +103,9 @@ function App() {
       <p>Team Strength: {totalStrength}</p>
       <p>Team Agility: {totalAgility}</p>
       <p>Team:</p>
-      {team.map((fighter, index) => (
+      {team.length === 0 ? (<p>Pick some team members!</p>
+      ) : (
+        team.map((fighter, index) => (
         <ul key={index}>
           <li>
             <img src={fighter.img} alt={fighter.name} />
@@ -104,10 +114,11 @@ function App() {
           <li>Price: {fighter.price}</li>
           <li>Strength: {fighter.strength}</li>
           <li>Agility: {fighter.agility}</li>
-        </ul>
-      ))}
-  
-       <p>Fighters</p>
+          <button>Remove</button>
+          </ul>
+        ))
+      )}
+      <p>Fighters</p>
       {zombieFighters.map((fighter, index) => (
         <ul key={index}>
           <li>
