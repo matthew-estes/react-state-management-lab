@@ -83,18 +83,26 @@ function App() {
     } else {
       setTeam([...team, fighter]);
       setMoney(money - fighter.price);
-      setZombieFighters(zombieFighters.filter((selected) => selected !== fighter));
+      setZombieFighters(
+        zombieFighters.filter((selected) => selected !== fighter)
+      );
     }
   }
 
-  // function handleRemoveFighter(fighter) {
-  //   const updateTeam - team.filter((teamMember) => ) 
+  function handleRemoveFighter(fighter) {
+    setTeam(team.filter((teamMember) => teamMember !== fighter));
+    setMoney(money + fighter.price);
+    setZombieFighters([...zombieFighters, fighter]);
+  }
 
-  // }
-
-
-  const totalStrength = team.reduce((total, fighter) => total + fighter.strength, 0);
-  const totalAgility = team.reduce((total, fighter) => total + fighter.agility, 0);
+  const totalStrength = team.reduce(
+    (total, fighter) => total + fighter.strength,
+    0
+  );
+  const totalAgility = team.reduce(
+    (total, fighter) => total + fighter.agility,
+    0
+  );
 
   return (
     <>
@@ -103,18 +111,19 @@ function App() {
       <p>Team Strength: {totalStrength}</p>
       <p>Team Agility: {totalAgility}</p>
       <p>Team:</p>
-      {team.length === 0 ? (<p>Pick some team members!</p>
+      {team.length === 0 ? (
+        <p>Pick some team members!</p>
       ) : (
         team.map((fighter, index) => (
-        <ul key={index}>
-          <li>
-            <img src={fighter.img} alt={fighter.name} />
+          <ul key={index}>
+            <li>
+              <img src={fighter.img} alt={fighter.name} />
             </li>
-          <li>{fighter.name}</li>
-          <li>Price: {fighter.price}</li>
-          <li>Strength: {fighter.strength}</li>
-          <li>Agility: {fighter.agility}</li>
-          <button>Remove</button>
+            <li>{fighter.name}</li>
+            <li>Price: {fighter.price}</li>
+            <li>Strength: {fighter.strength}</li>
+            <li>Agility: {fighter.agility}</li>
+            <button onClick={() => handleRemoveFighter(fighter)}>Remove</button>
           </ul>
         ))
       )}
