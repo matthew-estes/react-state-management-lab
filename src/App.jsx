@@ -92,8 +92,8 @@ function App() {
     <>
       <h1>Zombie Fighters</h1>
       <p>Money: ${money} </p>
-      <p>Team Strength:</p>
-      <p>Team Agility:</p>
+      <p>Team Strength: {totalStrength}</p>
+      <p>Team Agility: {totalAgility}</p>
       <p>Team:</p>
       {team.map((fighter, index) => (
         <ul key={index}>
