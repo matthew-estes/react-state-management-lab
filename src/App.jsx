@@ -85,6 +85,8 @@ function App() {
       setMoney(money - fighter.price);
     }
   }
+  const totalStrength = team.reduce((total, fighter) => total + fighter.strength, 0);
+  const totalAgility = team.reduce((total, fighter) => total + fighter.agility, 0);
 
   return (
     <>
@@ -104,7 +106,8 @@ function App() {
           <li>Agility: {fighter.agility}</li>
         </ul>
       ))}
-      <p>Fighters</p>
+  
+       <p>Fighters</p>
       {zombieFighters.map((fighter, index) => (
         <ul key={index}>
           <li>
