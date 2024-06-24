@@ -1,9 +1,24 @@
+
 ul {
   display: flex;
   flex-wrap: wrap;
 }
 
-li {
+li, h1, h3 {
   list-style: none;
   margin: 10px;
+}
+
+
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 5px
+
+}
+
+.fighters {
+  display: flex;
+  flex-wrap: wrap;
+
 }

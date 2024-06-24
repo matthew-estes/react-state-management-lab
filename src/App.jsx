@@ -107,39 +107,44 @@ function App() {
   return (
     <>
       <h1>Zombie Fighters</h1>
-      <p>Money: ${money} </p>
-      <p>Team Strength: {totalStrength}</p>
-      <p>Team Agility: {totalAgility}</p>
-      <p>Team:</p>
+      <h3>Money: ${money} </h3>
+      <h3>Team Strength: {totalStrength}</h3>
+      <h3>Team Agility: {totalAgility}</h3>
+      <h3>Team</h3>
+      <div class="team">
       {team.length === 0 ? (
-        <p>Pick some team members!</p>
+        <li>Pick some team members!</li>
       ) : (
         team.map((fighter, index) => (
-          <ul key={index}>
+          <li key={index}>
             <li>
-              <img src={fighter.img} alt={fighter.name} />
+              <img src={fighter.img} alt={fighter.name} width="100px"/>
             </li>
             <li>{fighter.name}</li>
-            <li>Price: {fighter.price}</li>
-            <li>Strength: {fighter.strength}</li>
+            <li>Price:  {fighter.price}</li>
+            <li>Strength:{fighter.strength}</li>
             <li>Agility: {fighter.agility}</li>
             <button onClick={() => handleRemoveFighter(fighter)}>Remove</button>
-          </ul>
+          </li>
         ))
       )}
-      <p>Fighters</p>
+       </div>
+      <h3>Fighters</h3>
+      <div class="fighters">
       {zombieFighters.map((fighter, index) => (
-        <ul key={index}>
+        <li key={index}>
           <li>
-            <img src={fighter.img} alt={fighter.name} />
+            <img src={fighter.img} alt={fighter.name} width="100px"/>
           </li>
           <li>{fighter.name}</li>
           <li>Price: {fighter.price}</li>
           <li>Strength: {fighter.strength}</li>
           <li>Agility: {fighter.agility}</li>
+          
           <button onClick={() => handleAddFighter(fighter)}>Add</button>
-        </ul>
+        </li>
       ))}
+      </div>
     </>
   );
 }
